@@ -1,5 +1,11 @@
 RewriteEngine On
 
+# Legacy medicine path now lives on a dedicated subdomain.
+RewriteCond %{HTTP_HOST} ^(www\.)?jackrainey\.com$ [NC]
+RewriteRule ^com/medicine/?$ https://medicine.jackrainey.com/ [R=302,L]
+RewriteCond %{HTTP_HOST} ^(www\.)?jackrainey\.com$ [NC]
+RewriteRule ^com/medicine/(.*)$ https://medicine.jackrainey.com/$1 [R=302,L]
+
 # Redirect all requests to index.php
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
