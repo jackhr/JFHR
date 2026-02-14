@@ -18,8 +18,14 @@ class MedicineController
         $requestUri = (string) parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
         $subPath = $this->extractSubPath($requestUri);
 
-        if ($subPath !== '' && $this->serveStaticIfExists($paths['public_dir'], $subPath)) {
-            return;
+        if ($subPath !== '') {
+            if ($this->serveStaticIfExists($paths['public_dir'], $subPath)) {
+                return;
+            }
+
+            if ($this->servePhpIfExists($paths['public_dir'], $subPath)) {
+                return;
+            }
         }
 
         $_SERVER['PHP_SELF'] = $this->mountPath . '/index.php';
@@ -131,6 +137,41 @@ class MedicineController
             return true;
         }
         readfile($requestedFile);
+        return true;
+    }
+
+    private function servePhpIfExists($publicDir, $relativePath)
+    {
+        $cleanPath = rawurldecode($relativePath);
+        if (str_contains($cleanPath, '..')) {
+            return false;
+        }
+
+        $publicRoot = realpath($publicDir);
+        if ($publicRoot === false) {
+            return false;
+        }
+
+        $requestedFile = realpath($publicRoot . '/' . ltrim($cleanPath, '/'));
+        if ($requestedFile === false || !is_file($requestedFile)) {
+            return false;
+        }
+
+        if (!str_starts_with($requestedFile, $publicRoot . '/')) {
+            return false;
+        }
+
+        $extension = strtolower(pathinfo($requestedFile, PATHINFO_EXTENSION));
+        if ($extension !== 'php') {
+            return false;
+        }
+
+        $relativeScript = ltrim(substr($requestedFile, strlen($publicRoot)), '/');
+        $_SERVER['PHP_SELF'] = $this->mountPath . '/' . $relativeScript;
+        $_SERVER['SCRIPT_NAME'] = $this->mountPath . '/' . $relativeScript;
+        $_SERVER['SCRIPT_FILENAME'] = $requestedFile;
+
+        require $requestedFile;
         return true;
     }
 }
