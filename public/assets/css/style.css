@@ -1,0 +1,228 @@
+:root {
+    --primary         : #d16e45;
+    --primary-rgb     : rgb(209, 110, 69);
+    --primary-rgb-vals: 209, 110, 69;
+    --secondary       : #17c8ff;
+    --black           : #232628;
+    --white           : #f5f5f5;
+    --grey-x-light    : #cdcdcd;
+    --grey-light      : #888888;
+    --grey-dark       : #676767;
+    --max-width       : 1140px;
+    --nav-height      : 135px;
+    --primary-font    : 'Montserrat', sans-serif;
+    --general-padding : 1rem;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing : border-box;
+    font-family: var(--primary-font);
+}
+
+html,
+body {
+    scroll-behavior: smooth;
+    overflow-x     : hidden;
+    max-width      : 100vw;
+}
+
+body {
+    margin                 : 0;
+    -webkit-font-smoothing : antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height             : 100vh;
+}
+
+body.login-body {
+    background-color: var(--secondary);
+    display         : flex;
+    align-items     : center;
+    justify-content : center;
+}
+
+body.apps-body {
+    background:
+        radial-gradient(circle at 14% 12%, #ffffff 0, #ffffff00 36%),
+        linear-gradient(160deg, #13a9d8 0%, #17c8ff 50%, #64dbff 100%);
+}
+
+.app-directory {
+    width           : min(960px, 92vw);
+    margin          : 3rem auto;
+    background-color: var(--white);
+    border-radius   : 16px;
+    padding         : 2rem;
+    box-shadow      : 0 18px 34px rgb(35 38 40 / 22%);
+}
+
+.directory-head {
+    margin-bottom: 1.6rem;
+}
+
+.directory-kicker {
+    margin        : 0;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size     : 0.8rem;
+    font-weight   : 700;
+    color         : var(--primary);
+}
+
+.directory-head h1 {
+    margin: 0.35rem 0 0.45rem;
+}
+
+.directory-head p {
+    margin   : 0;
+    color    : var(--grey-dark);
+    max-width: 580px;
+}
+
+.apps-grid {
+    display              : grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap                  : 1rem;
+}
+
+.app-panel {
+    border          : 1px solid #dfdfdf;
+    border-radius   : 12px;
+    background-color: #fafafa;
+    padding         : 1rem;
+    display         : flex;
+    flex-direction  : column;
+    gap             : 0.8rem;
+}
+
+.app-panel h2 {
+    margin   : 0;
+    font-size: 1.1rem;
+}
+
+.app-panel p {
+    margin     : 0;
+    color      : var(--grey-dark);
+    line-height: 1.45;
+}
+
+.app-link {
+    width          : fit-content;
+    padding-inline : 1.2rem;
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-transform: uppercase;
+}
+
+section {
+    background-color: var(--white);
+}
+
+a {
+    color          : var(--primary);
+    text-decoration: none;
+    transition     : color 0.3s;
+}
+
+a:hover {
+    color: var(--secondary);
+}
+
+a:focus:not(header a) {
+    color: var(--white);
+}
+
+svg {
+    width : 12px;
+    height: auto;
+}
+
+input {
+    width        : 100%;
+    height       : 40px;
+    border       : none;
+    border-radius: 2px;
+    background   : var(--white);
+    color        : var(--black);
+    font-weight  : 600;
+    padding      : 8px;
+}
+
+.continue-btn {
+    display         : flex;
+    align-items     : center;
+    justify-content : center;
+    background-color: var(--primary);
+    color           : var(--white);
+    border          : solid 2px var(--primary);
+    font-weight     : 700;
+    cursor          : pointer;
+    height          : 48px;
+    transition      : color 0.3s, background-color 0.3s, border-color 0.3s;
+    width           : 100%;
+    border-radius   : 6px;
+    font-size       : 16px;
+}
+
+.continue-btn:hover {
+    background-color: var(--white);
+    color           : var(--primary);
+}
+
+#login-form {
+    display       : flex;
+    flex-direction: column;
+    width         : 500px;
+    margin        : auto;
+    background    : var(--white);
+    border-radius : 8px;
+    position      : relative;
+    align-items   : center;
+    min-height    : 340px;
+    padding       : 32px;
+    box-shadow    : 0 0 13px 0 #9b9b9b;
+}
+
+#login-form>div:first-child {
+    display         : flex;
+    box-shadow      : 0 0 13px 0 #9b9b9b;
+    border-radius   : 50px;
+    padding         : 12px;
+    margin          : auto;
+    position        : absolute;
+    top             : -51px;
+    height          : 100px;
+    width           : 100px;
+    background-color: var(--white);
+}
+
+#login-form>div:first-child img {
+    width: 100%;
+}
+
+.input-container {
+    display    : flex;
+    align-items: center;
+    gap        : 12px;
+    width      : 100%;
+}
+
+#login-form>div:first-child+.input-container {
+    margin-top: auto;
+}
+
+.input-container:last-of-type {
+    margin: 24px 0 52px;
+}
+
+#login-form input {
+    background-color: var(--grey-x-light);
+}
