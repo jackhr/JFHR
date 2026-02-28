@@ -17,6 +17,11 @@ include_once __DIR__ . '/../partials/header.php';
             <p>Track medicine intake entries, ratings, and daily history.</p>
             <a class="continue-btn app-link" href="https://medicine.jackrainey.com/" rel="noopener noreferrer">Open Medicine App</a>
         </article>
+        <article class="app-panel">
+            <h2>Ash Surprises</h2>
+            <p>30 Surpises, big, and small.</p>
+            <a class="continue-btn app-link" href="https://ash-surprises.jackrainey.com/" rel="noopener noreferrer">Open Ash Surprises App</a>
+        </article>
     </section>
 </main>
 
