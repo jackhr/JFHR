@@ -22,6 +22,11 @@ include_once __DIR__ . '/../partials/header.php';
             <p>30 Surpises, big, and small.</p>
             <a class="continue-btn app-link" href="https://ash-surprises.jackrainey.com/" rel="noopener noreferrer">Open Ash Surprises App</a>
         </article>
+        <article class="app-panel">
+            <h2>Task Manager</h2>
+            <p>Manage tasks and track progress.</p>
+            <a class="continue-btn app-link" href="https://task-manager.jackrainey.com/" rel="noopener noreferrer">Open Task Manager App</a>
+        </article>
     </section>
 </main>
 
